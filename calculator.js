@@ -19,8 +19,10 @@ function operate(operator, a, b) {
   if (operator === "+") result = add(a, b);
   else if (operator === "-") result = substract(a, b);
   else if (operator === "*") result = multiply(a, b);
-  else if (operator === "/") result = divide(a, b);
-
+  else if (operator === "/") {
+    if (b === 0) result = "Math Error";
+    else result = divide(a, b);
+  }
   return result;
 }
 
@@ -45,7 +47,6 @@ digits.forEach((e) => {
 /////////////
 
 const operators = document.querySelectorAll(".operator");
-
 operators.forEach((e) => {
   e.addEventListener("click", () => {
     if (operator === undefined && a === undefined) {
@@ -59,7 +60,6 @@ operators.forEach((e) => {
 });
 
 const equals = document.querySelector(".equals");
-
 equals.addEventListener("click", (e) => {
   const equal = e.target.textContent;
   console.log(equal);
@@ -78,7 +78,6 @@ equals.addEventListener("click", (e) => {
 });
 
 const clear = document.querySelector(".clear");
-
 clear.addEventListener("click", () => {
   display.textContent = "0";
   (a = undefined), (b = undefined);
