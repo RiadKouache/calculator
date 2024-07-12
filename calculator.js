@@ -68,4 +68,6 @@ equals.addEventListener("click", (e) => {
   result = operate(operator, a, b);
   console.log(result);
   display.textContent = String(result);
+  displayValue = display.textContent;
+  //   a = result;
 });
