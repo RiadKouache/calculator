@@ -11,7 +11,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  return Math.round(a / b);
 }
 
 function operate(operator, a, b) {
@@ -62,12 +62,15 @@ equals.addEventListener("click", (e) => {
   const equal = e.target.textContent;
   console.log(equal);
 
-  b = Number(displayValue);
-  console.log("second number : ", b);
-  equals;
-  result = operate(operator, a, b);
-  console.log(result);
-  display.textContent = String(result);
-  displayValue = display.textContent;
-  //   a = result;
+  if (operator === null || operator === undefined || b === undefined) {
+    alert("You haven't entered any number or did any operation!");
+  } else {
+    b = Number(displayValue);
+    console.log("second number : ", b);
+
+    result = operate(operator, a, b);
+    console.log(result);
+    display.textContent = String(result);
+    displayValue = display.textContent;
+  }
 });
