@@ -48,11 +48,13 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((e) => {
   e.addEventListener("click", () => {
-    operator = e.textContent;
-    console.log(operator);
-    a = Number(displayValue);
-    console.log("first number : ", a);
-    display.textContent = "0";
+    if (operator === undefined && a === undefined) {
+      operator = e.textContent;
+      console.log(operator);
+      a = Number(displayValue);
+      console.log("first number : ", a);
+      display.textContent = "0";
+    }
   });
 });
 
@@ -62,7 +64,7 @@ equals.addEventListener("click", (e) => {
   const equal = e.target.textContent;
   console.log(equal);
 
-  if (operator === null || operator === undefined || b === undefined) {
+  if (operator === undefined || a === undefined) {
     alert("You haven't entered any number or did any operation!");
   } else {
     b = Number(displayValue);
@@ -73,4 +75,13 @@ equals.addEventListener("click", (e) => {
     display.textContent = String(result);
     displayValue = display.textContent;
   }
+});
+
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+  display.textContent = "0";
+  (a = undefined), (b = undefined);
+  operator = undefined;
+  console.clear();
 });
