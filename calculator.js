@@ -31,14 +31,26 @@ let displayValue;
 
 const display = document.querySelector(".display");
 const digits = document.querySelectorAll(".digit");
+let decimalActivation = document.getElementById("decimal");
 
 //////////
 
 digits.forEach((e) => {
   e.addEventListener("click", () => {
-    if (display.textContent === "0") display.textContent = e.textContent;
-    else display.textContent += e.textContent;
-
+    decimalActivation.style.pointerEvents = "auto";
+    if (display.textContent === "0") {
+      if (e.textContent === ".") {
+        display.textContent += e.textContent;
+      } else display.textContent = e.textContent;
+    } else if (display.textContent != "0") {
+      if (!display.textContent.includes(".")) {
+        display.textContent += e.textContent;
+      } else if (display.textContent.includes(".")) {
+        console.log(display.textContent);
+        decimalActivation.style.pointerEvents = "none";
+        display.textContent += e.textContent;
+      }
+    }
     displayValue = display.textContent;
     console.log(displayValue);
   });
