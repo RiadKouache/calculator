@@ -1,17 +1,17 @@
 function add(a, b) {
-  return a + b;
+  return (a + b).toFixed(2);
 }
 
 function substract(a, b) {
-  return a - b;
+  return (a - b).toFixed(2);
 }
 
 function multiply(a, b) {
-  return a * b;
+  return (a * b).toFixed(2);
 }
 
 function divide(a, b) {
-  return Math.round(a / b);
+  return Math.round(a / b).toFixed(2);
 }
 
 function operate(operator, a, b) {
@@ -39,12 +39,12 @@ digits.forEach((e) => {
   e.addEventListener("click", () => {
     decimalActivation.style.pointerEvents = "auto";
     if (display.textContent === "0") {
-      if (e.textContent === ".") {
-        display.textContent += e.textContent;
+      if (e.textContent.trim() === ".") {
+        display.textContent += ".";
       } else display.textContent = e.textContent;
     } else if (display.textContent != "0") {
       if (!display.textContent.includes(".")) {
-        display.textContent += e.textContent;
+        display.textContent += e.textContent.trim();
       } else if (display.textContent.includes(".")) {
         console.log(display.textContent);
         decimalActivation.style.pointerEvents = "none";
@@ -61,13 +61,13 @@ digits.forEach((e) => {
 const operators = document.querySelectorAll(".operator");
 operators.forEach((e) => {
   e.addEventListener("click", () => {
-    if (operator === undefined && a === undefined) {
-      operator = e.textContent;
-      console.log(operator);
-      a = Number(displayValue);
-      console.log("first number : ", a);
-      display.textContent = "0";
-    }
+    // if (operator === undefined && a === undefined) {
+    operator = e.textContent;
+    console.log(operator);
+    a = Number(displayValue);
+    console.log("first number : ", a);
+    display.textContent = "0";
+    // }
   });
 });
 
@@ -95,4 +95,15 @@ clear.addEventListener("click", () => {
   (a = undefined), (b = undefined);
   operator = undefined;
   console.clear();
+});
+
+const del = document.querySelector(".delete");
+del.addEventListener("click", () => {
+  let displayArray = display.textContent.split("");
+  displayArray.splice(-1, 1);
+  displayValue = displayArray.join("");
+  display.textContent = displayArray.join("");
+  console.log(displayArray);
+
+  // a = Number(display.textContent);
 });
