@@ -7,6 +7,29 @@ body {
   background-color: #e7e3e3;
 }
 
+.title {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  flex-direction: center;
+  align-items: center;
+}
+
+.heading {
+  color: #4a249d;
+  font-weight: bold;
+  font-size: 40px;
+  border-bottom: #ff4c4c solid 4px;
+}
+
+.subheading {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* MAIN  */
+
 .calculator {
   margin-top: 48px;
 }
